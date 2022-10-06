@@ -1,28 +1,47 @@
+#pragma once
+
+#include <algorithm>
+#include <initializer_list>
 #include <stdexcept>
+
+#include "../uglify.hpp"
 
 template <typename T, int N>
 class Array {
- public:
-  Array() = default;
+   public:
+    Array(std::initializer_list<T> lst) {  // Do not touch.
+        std::copy(lst.begin(), lst.end(), arr_);
+    }
 
-  Array(std::initializer_list<T> lst) {  // Do not touch.
-    std::copy(lst.begin(), lst.end(), arr_);
-  }
+    T& front() {
+        return this->arr_[0];
+    }
 
-  T& Front();
+    T& back() {
+        return this->arr_[N - 1];
+    }
 
-  T& Back();
+    int size() {
+        return N;
+    }
 
-  int Size();
+    bool empty() {
+        return N == 0;
+    }
 
-  bool Empty();
+    T* data() {
+        return this->arr_;
+    }
 
-  T* Data();
+    T& operator[](int i) {
+        return this->arr_[i];
+    }
 
-  T& operator[](int i);
+    void swap(Array<T, N>& current) {
+        char *a = (char*)this->arr_, *b = (char*)current.arr_;
+        for (size_t i = 0; i < N * sizeof(T); i++) std::swap(a[i], b[i]);
+    }
 
-  void Swap(Array<T, N>& cur);
-
- private:
-  T arr_[N];
+   private:
+    T arr_[N];
 };
