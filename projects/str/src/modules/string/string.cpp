@@ -81,13 +81,9 @@ void String::clear() {
 }
 
 void String::swap(String& other) {
-    String copy = String(other);
-    other.clear();
-    for (size_t i = 0; i < this->size(); i++)
-        other.push_back(this->_string[i]);
-    this->clear();
-    for (size_t i = 0; i < this->size(); i++)
-        this->push_back(copy[i]);
+    std::swap(this->_string, other._string);
+    std::swap(this->_capacity, other._capacity);
+    std::swap(this->_size, other._size);
 }
 
 std::ostream& operator<<(std::ostream& os, String const& string) {
