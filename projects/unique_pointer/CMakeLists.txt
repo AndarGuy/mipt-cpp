@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(str)
+project(unique_pointer)
 
 Include(FetchContent)
 
