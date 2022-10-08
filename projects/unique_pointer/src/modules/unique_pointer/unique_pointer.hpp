@@ -8,7 +8,7 @@ class UniquePointer {
 
     /// @brief Конструктор от указателя (сохраняет указатель на объект).
     /// @param ptr Указатель на объект
-    UniquePointer(T *ptr) : UniquePointer() {
+    UniquePointer(T *ptr) noexcept : UniquePointer() {
         this->pointer = ptr;
     }
 
@@ -19,11 +19,19 @@ class UniquePointer {
     /// должны быть явно запрещены.
     UniquePointer &operator=(const UniquePointer &other) = delete;
 
+    template <typename V>
+    UniquePointer(const UniquePointer<V> &&other) {
+        std::cout << std::is_convertible_v<V, T> << std::endl;
+        if (std::is_convertible_v<V, T>) *this = (UniquePointer &&) other;
+    }
+
     /// @brief Перемещающий конструктор и перемещающее присваивание
     /// должны передавать владение объектом.
     UniquePointer(const UniquePointer &&other) noexcept : UniquePointer() {
         *this = (UniquePointer &&) other;
     }
+
+    // TODO: * Должны быть поддержаны разрешённые конверсии (например от ребёнка к родителю) ?
 
     /// @brief Перемещающий конструктор и перемещающее присваивание
     /// должны передавать владение объектом.
