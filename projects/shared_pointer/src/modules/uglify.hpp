@@ -1,0 +1,9 @@
+#define SharedPtr SharedPointer
+#define WeakPtr WeakPointer
+#define Lock lock
+#define Expired expired
+#define Reset reset
+#define Swap swap
+#define UseCount use_count
+#define Get get
+#define MakeShared make_shared
