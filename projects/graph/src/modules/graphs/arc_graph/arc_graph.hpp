@@ -2,7 +2,7 @@
 
 #include "../igraph.hpp"
 
-class ArcGraph : IGraph {
+class ArcGraph : public IGraph {
    private:
     std::vector<std::pair<size_t, size_t>> edges;
     size_t vertices_amount;
@@ -12,7 +12,7 @@ class ArcGraph : IGraph {
     ArcGraph(size_t vertices_amount) noexcept;
 
     // Конструктор от указателя на базовый класс.
-    ArcGraph(IGraph *graph);
+    ArcGraph(const IGraph *graph) noexcept;
 
     // Конструктор копирования и копирующее присваивание должны быть явно запрещены.
     ArcGraph(IGraph &graph) = delete;

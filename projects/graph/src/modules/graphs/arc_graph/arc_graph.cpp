@@ -4,7 +4,12 @@ ArcGraph::ArcGraph(size_t vertices_amount) noexcept {
     this->vertices_amount = vertices_amount;
 }
 
-ArcGraph::ArcGraph(IGraph *graph) {
+ArcGraph::ArcGraph(const IGraph *graph) noexcept : ArcGraph::ArcGraph(graph->vertices_count()) {
+    std::vector<size_t> vertices;
+    for (size_t from = 0; from < graph->vertices_count(); from++, vertices.clear()) {
+        graph->get_next_vertices(from, vertices);
+        for (size_t to : vertices) this->add_edge(from, to);
+    }
 }
 
 void ArcGraph::add_edge(size_t from, size_t to) {
