@@ -31,8 +31,6 @@ class UniquePointer {
         *this = (UniquePointer &&) other;
     }
 
-    // TODO: * Должны быть поддержаны разрешённые конверсии (например от ребёнка к родителю) ?
-
     /// @brief Перемещающий конструктор и перемещающее присваивание
     /// должны передавать владение объектом.
     UniquePointer &operator=(UniquePointer &&other) noexcept {
