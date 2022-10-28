@@ -3,6 +3,7 @@
 
 #include "exceptions/exceptions.hpp"
 #include "headers/headers.hpp"
+#include "pixel_storage/pixel_storage.hpp"
 
 // **COLOR TABLE**
 
@@ -10,24 +11,15 @@
 
 // NOT IMPLEMENTED YET
 
-// **PIXEL STORAGE**
-
-// ...............
-
-class PixelStorage {
-   public:
-    static uint32_t calculate_row_size(int32_t image_width, uint16_t bits_per_pixel);
-    static uint32_t calculate_pixel_array_size(int32_t image_heigth, uint32_t row_size);
-};
-
 // **BITMAP DATA**
 
 // ...............
 
 class Bitmap {
    private:
-    std::unique_ptr<FileHeader> file_header;
-    std::unique_ptr<DIBHeader> dib_header;
+    std::unique_ptr<BITMAP_FILE_HEADER> file_header;
+    std::unique_ptr<BITMAP_DIB_HEADER> dib_header;
+    std::unique_ptr<PixelStorage> pixel_storage;
     std::fstream file_stream;
 
    public:
