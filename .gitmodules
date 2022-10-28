@@ -1,0 +1,3 @@
+[submodule "projects/imaginator/thirdparty/Catch2"]
+	path = projects/imaginator/thirdparty/Catch2
+	url = https://github.com/catchorg/Catch2.git
