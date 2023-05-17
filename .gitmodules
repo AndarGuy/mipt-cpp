@@ -1,3 +1,6 @@
 [submodule "projects/imaginator/thirdparty/Catch2"]
 	path = projects/imaginator/thirdparty/Catch2
 	url = https://github.com/catchorg/Catch2.git
+[submodule "contests/contest1/thirdparty/boost"]
+	path = contests/contest1/thirdparty/boost
+	url = https://github.com/boostorg/boost
